@@ -2,7 +2,10 @@
   <h2>Hotel List</h2>
   <div class="row">
     <div class="col-md-4" *ngFor="let hotel of hotels">
-      <app-hotel-card [hotel]="hotel"></app-hotel-card>
+      <app-hotel-card
+        [hotel]="hotel"
+        (sendDeleteHotel)="deleteHotel($event)"
+      ></app-hotel-card>
     </div>
   </div>
 </div>

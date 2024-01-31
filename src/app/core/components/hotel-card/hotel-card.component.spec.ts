@@ -34,4 +34,29 @@ describe('HotelCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit sendDeleteHotel event with correct hotelId parameter', () => {
+    const hotelId = 1;
+    const emitSpy = jest.spyOn(component.sendDeleteHotel, 'emit');
+
+    component.deleteHotel(hotelId);
+
+    expect(emitSpy).toHaveBeenCalledWith(hotelId);
+  });
+
+  it('should not throw any errors or exceptions', () => {
+    const component = new HotelCardComponent();
+
+    expect(() => {
+      component.deleteHotel(1);
+    }).not.toThrow();
+  });
+
+  it('should handle the case where hotelId parameter is undefined', () => {
+    const component = new HotelCardComponent();
+
+    expect(() => {
+      component.deleteHotel('1' as unknown as number);
+    }).not.toThrow();
+  });
 });

@@ -117,4 +117,56 @@ describe('HotelService', () => {
     const result = hotelService.getHotels();
     expect(result).toEqual(hotels);
   });
+
+  it('should delete the hotel with the given id from the list of hotels', () => {
+    const hotelService = new HotelService();
+    const hotels = [
+      {
+        id: 1,
+        name: 'Hotel 1',
+        location: '',
+        price: 20,
+        category: 5,
+        rating: 6,
+      },
+      {
+        id: 2,
+        name: 'Hotel 2',
+        location: '',
+        price: 20,
+        category: 5,
+        rating: 6,
+      },
+      {
+        id: 3,
+        name: 'Hotel 3',
+        location: '',
+        price: 20,
+        category: 5,
+        rating: 6,
+      },
+    ];
+    hotelService['hotels'] = hotels;
+
+    hotelService.deleteHotel(2);
+
+    expect(hotelService['hotels']).toEqual([
+      {
+        id: 1,
+        name: 'Hotel 1',
+        location: '',
+        price: 20,
+        category: 5,
+        rating: 6,
+      },
+      {
+        id: 3,
+        name: 'Hotel 3',
+        location: '',
+        price: 20,
+        category: 5,
+        rating: 6,
+      },
+    ]);
+  });
 });

@@ -14,4 +14,10 @@ export class HotelListComponent implements OnInit {
   ngOnInit(): void {
     this.hotels = this.hotelService.getHotels();
   }
+
+  deleteHotel(hotelId: number): void {
+    if (typeof hotelId !== 'number' || hotelId < 1) return;
+
+    this.hotelService.deleteHotel(hotelId);
+  }
 }

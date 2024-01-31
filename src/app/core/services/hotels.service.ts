@@ -48,4 +48,8 @@ export class HotelService {
       this.hotels[index] = { ...this.hotels[index], ...updatedHotel };
     }
   }
+
+  deleteHotel(hotelId: number): void {
+    this.hotels = this.hotels.filter((h) => h.id !== hotelId);
+  }
 }
