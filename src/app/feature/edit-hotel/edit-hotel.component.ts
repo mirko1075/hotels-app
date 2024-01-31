@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Hotel, HotelImpl } from 'src/app/core/models/hotel.model';
 import { HotelService } from 'src/app/core/services/hotels.service';
 @Component({
   selector: 'app-edit-hotel',
@@ -8,7 +9,7 @@ import { HotelService } from 'src/app/core/services/hotels.service';
 })
 export class EditHotelComponent implements OnInit {
   hotelId: number = -1;
-  hotel: any;
+  hotel!: Hotel;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,11 +20,14 @@ export class EditHotelComponent implements OnInit {
 
   ngOnInit() {
     this.hotelId = Number(this.route.snapshot.paramMap.get('id'));
-    this.hotel = this.hotelService.getHotelById(this.hotelId);
+    if (this.hotelId) this.hotel = this.hotelService.getHotelById(this.hotelId);
+    else this.hotel = new HotelImpl(-1, '', '', 0, 0, 0);
   }
 
   saveChanges() {
-    this.hotelService.updateHotel(this.hotel);
+    if (this.hotelId && this.hotelId > 0)
+      this.hotelService.updateHotel(this.hotel);
+    else this.hotelService.addHotel(this.hotel);
     this.cdr.detectChanges();
     this.router.navigate(['/hotels']);
   }

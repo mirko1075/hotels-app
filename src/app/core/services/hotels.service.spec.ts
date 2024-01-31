@@ -169,4 +169,37 @@ describe('HotelService', () => {
       },
     ]);
   });
+
+  it('should add a new hotel with a unique id to the list of hotels', () => {
+    const hotelService = new HotelService();
+    const hotel: Hotel = {
+      id: 1,
+      name: 'Hotel A',
+      location: 'Location A',
+      price: 100,
+      rating: 4,
+      category: 1,
+    };
+    hotelService.addHotel(hotel);
+    const hotels = hotelService.getHotels();
+    expect(hotels).toContain(hotel);
+  });
+
+  it('should delete the hotel with the valid hotelId', () => {
+    const hotelId = 2;
+    hotelService.deleteHotel(hotelId);
+    const hotels = hotelService['hotels'];
+    expect(hotels).toEqual([
+      {
+        category: 5,
+        id: 1,
+        imageUrl: 'https://updated-image-url.com',
+        location: 'Updated Madrid',
+        name: 'Updated Hotel A',
+        price: 200,
+        rating: 5,
+        vacational: false,
+      },
+    ]);
+  });
 });

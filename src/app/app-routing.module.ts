@@ -18,6 +18,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'add-hotel',
+    component: EditHotelComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'edit-hotel/:id',
     component: EditHotelComponent,
     canActivate: [AuthGuard],

@@ -66,4 +66,10 @@ describe('NavbarComponent', () => {
 
     expect(windowStub.location.replace).not.toHaveBeenCalled();
   });
+
+  it('should set navbarCollapsed to false when it is true', () => {
+    component.navbarCollapsed = true;
+    component.toggleNavbarCollapsing();
+    expect(component.navbarCollapsed).toBe(false);
+  });
 });

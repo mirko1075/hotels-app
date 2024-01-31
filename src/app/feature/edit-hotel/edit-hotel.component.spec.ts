@@ -3,7 +3,6 @@ import { EditHotelComponent } from './edit-hotel.component';
 import { HotelService } from 'src/app/core/services/hotels.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { DOCUMENT } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -29,9 +28,11 @@ const hotelServiceStub = {
   getHotelById: jest.fn().mockReturnValue(hotelMock),
   getHotels: jest.fn().mockReturnValue([hotelMock]),
   updateHotel: () => null,
+  deleteHotel: () => null,
+  addHotel: () => null,
 };
 
-const routeParams = {
+const routeParamsStub = {
   snapshot: {
     paramMap: {
       get: jest.fn(),
@@ -56,7 +57,7 @@ describe('EditHotelComponent', () => {
       providers: [
         FormsModule,
         { provide: HotelService, useValue: hotelServiceStub },
-        { provide: ActivatedRoute, useValue: routeParams },
+        { provide: ActivatedRoute, useValue: routeParamsStub },
         { provide: Router, useValue: routerStub },
         { provide: AuthService, useValue: authServiceStub },
         {
@@ -92,26 +93,23 @@ describe('EditHotelComponent', () => {
   it('should set hotel to the hotel with the id from the hotelService when OnInit is called', () => {
     component.ngOnInit();
     expect(component.hotel).toEqual({
-      category: 4,
-      id: 1,
-      imageUrl:
-        'https://media.istockphoto.com/id/104731717/es/foto/complejo-tur%C3%ADstico-de-lujo.jpg?s=2048x2048&w=is&k=20&c=QRLnvUZi6xp9xgss6e6IMg5Gv5g2iosfFzPR9DyS__g=',
-      location: 'Madrid',
-      name: 'Hotel A',
-      price: 100,
-      rating: 4,
-      vacational: true,
+      category: 0,
+      id: -1,
+      imageUrl: undefined,
+      location: '',
+      name: '',
+      price: 0,
+      rating: 0,
+      vacational: undefined,
     });
   });
 
   it('should update the hotel using the hotelService when saveChanges is called', () => {
     const spy = jest.spyOn(hotelServiceStub, 'updateHotel');
-    component.hotel = { id: 1, name: 'Hotel A' };
+    component.hotelId = hotelMock.id;
+    component.hotel = hotelMock;
     component.saveChanges();
-    expect(spy).toHaveBeenCalledWith({
-      id: 1,
-      name: 'Hotel A',
-    });
+    expect(spy).toHaveBeenCalledWith(hotelMock);
   });
 
   it('should set hotelId to -1 when it is not a number', () => {
@@ -120,9 +118,22 @@ describe('EditHotelComponent', () => {
     expect(component.hotelId).toBeNaN();
   });
 
-  it('should set hotel to undefined when the hotel with the given id does not exist in the hotelService', () => {
-    jest.spyOn(hotelServiceStub, 'getHotelById').mockReturnValueOnce(null);
-    component.ngOnInit();
-    expect(component.hotel).toBeNull();
+  it('should add the hotel and navigate to /hotels when hotelId is falsy', () => {
+    const spy = jest.spyOn(hotelServiceStub, 'addHotel');
+    const spyRouter = jest.spyOn(routerStub, 'navigate');
+    component.hotelId = -1;
+    component.hotel = {
+      id: 0,
+      name: 'New Hotel',
+      location: 'New Location',
+      rating: 0,
+      price: 0,
+      category: 1,
+    };
+
+    component.saveChanges();
+
+    expect(spy).toHaveBeenCalled();
+    expect(spyRouter).toHaveBeenCalledWith(['/hotels']);
   });
 });

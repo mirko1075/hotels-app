@@ -49,6 +49,13 @@ export class HotelService {
     }
   }
 
+  addHotel(hotel: Hotel): void {
+    const ids = this.hotels.map((h) => h.id);
+    const lastId = Math.max(...ids);
+    hotel.id = lastId + 1;
+    this.hotels.push(hotel);
+  }
+
   deleteHotel(hotelId: number): void {
     this.hotels = this.hotels.filter((h) => h.id !== hotelId);
   }
