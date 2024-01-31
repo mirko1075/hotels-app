@@ -1,20 +1,24 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Home</a>
-
+    <a class="navbar-brand" routerLink="/">Home</a>
     <button
+      (click)="toggleNavbarCollapsing()"
       class="navbar-toggler"
       type="button"
-      data-toggle="collapse"
-      data-target="#navbarContent"
-      aria-controls="navbarContent"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbarContent" class="collapse navbar-collapse">
+    <div
+      id="navbarContent"
+      [class.collapse]="navbarCollapsed"
+      class="navbar-collapse"
+    >
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a

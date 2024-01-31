@@ -1476,6 +1476,15 @@
         "hash": "sha512-kNFPyjhh5cKjrUltxs+wFx+ZkbRaxxmZ+X0ZU31SOsxCEtP9VPgtq2teZw1DebupL5GmDaNQ6yKMMVcM41iqDg=="
       }
     },
+    "npm:fast-glob@3.3.0": {
+      "type": "npm",
+      "name": "npm:fast-glob@3.3.0",
+      "data": {
+        "version": "3.3.0",
+        "packageName": "fast-glob",
+        "hash": "sha512-ChDuvbOypPuNjO8yIDf36x7BlZX1smcUMTTcyoIjycexOxd6DFsKsg21qVBzEmr3G7fUKIRy2/psii+CIUt7FA=="
+      }
+    },
     "npm:fast-glob@3.2.7": {
       "type": "npm",
       "name": "npm:fast-glob@3.2.7",
@@ -1753,6 +1762,15 @@
         "version": "16.2.12",
         "packageName": "@angular/forms",
         "hash": "sha512-1Eao89hlBgLR3v8tU91vccn21BBKL06WWxl7zLpQmG6Hun+2jrThgOE4Pf3os4fkkbH4Apj0tWL2fNIWe/blbw=="
+      }
+    },
+    "npm:@angular/localize": {
+      "type": "npm",
+      "name": "npm:@angular/localize",
+      "data": {
+        "version": "16.2.12",
+        "packageName": "@angular/localize",
+        "hash": "sha512-sNIHDlZKENPQqx64qGF99g2sOCy9i9O4VOmjKD/FZbeE8O5qBbaQlkwOlFoQIt35/cnvtAtf7oQF6tqmiVtS2w=="
       }
     },
     "npm:@angular/platform-browser": {
@@ -9639,6 +9657,15 @@
         "hash": "sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q=="
       }
     },
+    "npm:jquery": {
+      "type": "npm",
+      "name": "npm:jquery",
+      "data": {
+        "version": "3.7.1",
+        "packageName": "jquery",
+        "hash": "sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg=="
+      }
+    },
     "npm:webidl-conversions@5.0.0": {
       "type": "npm",
       "name": "npm:webidl-conversions@5.0.0",
@@ -13787,6 +13814,11 @@
     },
     {
       "source": "npm:@angular-devkit/build-angular",
+      "target": "npm:@angular/localize",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular-devkit/build-angular",
       "target": "npm:jest",
       "type": "static"
     },
@@ -15428,6 +15460,56 @@
     {
       "source": "npm:@angular/forms",
       "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/localize",
+      "target": "npm:@angular/compiler",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/localize",
+      "target": "npm:@angular/compiler-cli",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/localize",
+      "target": "npm:@babel/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/localize",
+      "target": "npm:fast-glob@3.3.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/localize",
+      "target": "npm:yargs",
+      "type": "static"
+    },
+    {
+      "source": "npm:fast-glob@3.3.0",
+      "target": "npm:@nodelib/fs.stat",
+      "type": "static"
+    },
+    {
+      "source": "npm:fast-glob@3.3.0",
+      "target": "npm:@nodelib/fs.walk",
+      "type": "static"
+    },
+    {
+      "source": "npm:fast-glob@3.3.0",
+      "target": "npm:glob-parent",
+      "type": "static"
+    },
+    {
+      "source": "npm:fast-glob@3.3.0",
+      "target": "npm:merge2",
+      "type": "static"
+    },
+    {
+      "source": "npm:fast-glob@3.3.0",
+      "target": "npm:micromatch",
       "type": "static"
     },
     {

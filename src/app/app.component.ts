@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     this.authService.isAuthenticated$.subscribe({
       next: (success: boolean) => {
-        console.log('Ciao');
         this.isAuthenticated = success;
       },
       error: (err) => console.error(err),

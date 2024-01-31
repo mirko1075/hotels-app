@@ -8,7 +8,9 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  isAuthenticated!: boolean;
+  isAuthenticated = false;
+  navbarCollapsed = true;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private authService: AuthService
@@ -32,5 +34,9 @@ export class NavbarComponent implements OnInit {
 
   public signIn(): void {
     this.authService.loginWithRedirect();
+  }
+
+  public toggleNavbarCollapsing() {
+    this.navbarCollapsed = !this.navbarCollapsed;
   }
 }
