@@ -47,7 +47,7 @@
       },
       {
         "file": ".gitignore",
-        "hash": "13044518069027839699"
+        "hash": "7494372721894256936"
       },
       {
         "file": ".vscode/extensions.json",
@@ -63,15 +63,15 @@
       },
       {
         "file": "README.md",
-        "hash": "5878390912845324116"
+        "hash": "3838163519656976113"
       },
       {
         "file": "angular.json",
-        "hash": "18264479764156580162"
+        "hash": "13560660324510257717"
       },
       {
         "file": "jest.config.ts",
-        "hash": "1249508804283204855"
+        "hash": "2940637016477556630"
       },
       {
         "file": "jest.preset.ts",
@@ -79,19 +79,15 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "5507825571873427191"
+        "hash": "4870046277532474469"
       },
       {
         "file": "package.json",
-        "hash": "1713266143006565321"
+        "hash": "9863582694571325082"
       },
       {
         "file": "setup-jest.ts",
         "hash": "2760209368871118454"
-      },
-      {
-        "file": "src/__mocks__/client.js",
-        "hash": "3244421341483603138"
       },
       {
         "file": "src/app/app-routing.module.ts",
@@ -99,7 +95,7 @@
       },
       {
         "file": "src/app/app.component.html",
-        "hash": "13310825476557719790"
+        "hash": "4419683888100521251"
       },
       {
         "file": "src/app/app.component.scss",
@@ -115,7 +111,7 @@
       },
       {
         "file": "src/app/app.module.ts",
-        "hash": "13485075862970846316"
+        "hash": "2073658141304908195"
       },
       {
         "file": "src/app/core/components/hotel-card/hotel-card.component.html",
@@ -135,7 +131,7 @@
       },
       {
         "file": "src/app/core/components/navbar/navbar.component.html",
-        "hash": "8928706373450700903"
+        "hash": "7270673470262432410"
       },
       {
         "file": "src/app/core/components/navbar/navbar.component.scss",
@@ -143,11 +139,11 @@
       },
       {
         "file": "src/app/core/components/navbar/navbar.component.spec.ts",
-        "hash": "2726196180678749758"
+        "hash": "12365801876821165423"
       },
       {
         "file": "src/app/core/components/navbar/navbar.component.ts",
-        "hash": "5992996344097410977"
+        "hash": "9653894971085720137"
       },
       {
         "file": "src/app/core/models/hotel.model.ts",
@@ -183,7 +179,7 @@
       },
       {
         "file": "src/app/feature/home/home.component.html",
-        "hash": "15066936648872268846"
+        "hash": "3358797244989308193"
       },
       {
         "file": "src/app/feature/home/home.component.spec.ts",
@@ -231,11 +227,11 @@
       },
       {
         "file": "src/environments/environment.prod.ts",
-        "hash": "5406836414239361753"
+        "hash": "3332024218591148215"
       },
       {
         "file": "src/environments/environment.ts",
-        "hash": "10232718114616947880"
+        "hash": "11972266876262965268"
       },
       {
         "file": "src/favicon.ico",
@@ -243,11 +239,11 @@
       },
       {
         "file": "src/index.html",
-        "hash": "15186728992541506526"
+        "hash": "9956036481787177852"
       },
       {
         "file": "src/main.ts",
-        "hash": "10677612470474905821"
+        "hash": "4828626533639225360"
       },
       {
         "file": "src/polyfills.ts",
@@ -255,7 +251,7 @@
       },
       {
         "file": "src/styles.scss",
-        "hash": "5195668842064076916"
+        "hash": "9676253888508844234"
       },
       {
         "file": "src/test-setup.ts",
@@ -263,11 +259,11 @@
       },
       {
         "file": "tsconfig.app.json",
-        "hash": "9041030522571917449"
+        "hash": "11474309097541706346"
       },
       {
         "file": "tsconfig.json",
-        "hash": "13345998764692174667"
+        "hash": "17790788623911658620"
       },
       {
         "file": "tsconfig.spec.json",
