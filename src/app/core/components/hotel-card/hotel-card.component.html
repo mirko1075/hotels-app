@@ -1,0 +1,14 @@
+<div class="card">
+  <img [src]="hotel.imageUrl" class="card-img-top" alt="Hotel Image" />
+  <div class="card-body">
+    <h5 class="card-title">{{ hotel.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted" *ngIf="hotel.vacational">
+      Vacational
+    </h6>
+    <p class="card-text">{{ hotel.location }}</p>
+    <p class="card-text">Price: ${{ hotel.price }}</p>
+    <p class="card-text">Rating: {{ hotel.rating }}</p>
+    <p class="card-text">Category: {{ hotel.category }}</p>
+    <a [routerLink]="['/edit-hotel', hotel.id]" class="btn btn-primary">Edit</a>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Home</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbarContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            routerLink="/hotels"
+            routerLinkActive="active"
+            *ngIf="isAuthenticated"
+            >Hotels</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink=""
+            (click)="signIn()"
+            *ngIf="!isAuthenticated"
+            >Sign in</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/profile"
+            routerLinkActive="active"
+            *ngIf="isAuthenticated"
+            >Profile</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink=""
+            (click)="signOut()"
+            *ngIf="isAuthenticated"
+            >Sign out</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

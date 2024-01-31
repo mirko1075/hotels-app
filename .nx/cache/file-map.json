@@ -1,0 +1,275 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.3.0",
+  "deps": {
+    "@angular-builders/jest": "^1.0.0",
+    "@angular-devkit/build-angular": "^16.2.12",
+    "@angular/animations": "^16.2.12",
+    "@angular/common": "^16.2.12",
+    "@angular/compiler": "^16.2.12",
+    "@angular/core": "^16.2.12",
+    "@angular/forms": "^16.2.12",
+    "@angular/platform-browser": "^16.2.12",
+    "@angular/platform-browser-dynamic": "^16.2.12",
+    "@angular/router": "^16.2.12",
+    "@auth0/auth0-angular": "^2.2.3",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.3",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.3",
+    "@angular/cli": "~16.2.12",
+    "@angular/compiler-cli": "^16.2.12",
+    "@inrupt/jest-jsdom-polyfills": "^3.0.2",
+    "@nx/jest": "^17.3.0",
+    "@types/jasmine": "~4.0.0",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.10",
+    "jasmine-core": "~4.3.0",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^14.0.0",
+    "jsdom": "^16.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "~4.9.5"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "13044518069027839699"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "5331566439708925252"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "4815948323043747099"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "5336636969995539451"
+      },
+      {
+        "file": "README.md",
+        "hash": "5878390912845324116"
+      },
+      {
+        "file": "angular.json",
+        "hash": "18264479764156580162"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "1249508804283204855"
+      },
+      {
+        "file": "jest.preset.ts",
+        "hash": "5217157233143205570"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "5507825571873427191"
+      },
+      {
+        "file": "package.json",
+        "hash": "1713266143006565321"
+      },
+      {
+        "file": "setup-jest.ts",
+        "hash": "2760209368871118454"
+      },
+      {
+        "file": "src/__mocks__/client.js",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/app-routing.module.ts",
+        "hash": "215079542225912184"
+      },
+      {
+        "file": "src/app/app.component.html",
+        "hash": "13310825476557719790"
+      },
+      {
+        "file": "src/app/app.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/app.component.spec.ts",
+        "hash": "12505095889589333420"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "3388775625694066566"
+      },
+      {
+        "file": "src/app/app.module.ts",
+        "hash": "13485075862970846316"
+      },
+      {
+        "file": "src/app/core/components/hotel-card/hotel-card.component.html",
+        "hash": "10494966164110906919"
+      },
+      {
+        "file": "src/app/core/components/hotel-card/hotel-card.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/core/components/hotel-card/hotel-card.component.spec.ts",
+        "hash": "11580080510674322556"
+      },
+      {
+        "file": "src/app/core/components/hotel-card/hotel-card.component.ts",
+        "hash": "11475895794146013541"
+      },
+      {
+        "file": "src/app/core/components/navbar/navbar.component.html",
+        "hash": "8928706373450700903"
+      },
+      {
+        "file": "src/app/core/components/navbar/navbar.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/core/components/navbar/navbar.component.spec.ts",
+        "hash": "2726196180678749758"
+      },
+      {
+        "file": "src/app/core/components/navbar/navbar.component.ts",
+        "hash": "5992996344097410977"
+      },
+      {
+        "file": "src/app/core/models/hotel.model.ts",
+        "hash": "1053848397847666195"
+      },
+      {
+        "file": "src/app/core/services/hotels.service.spec.ts",
+        "hash": "17067358049653343040"
+      },
+      {
+        "file": "src/app/core/services/hotels.service.ts",
+        "hash": "14531106330164727168"
+      },
+      {
+        "file": "src/app/feature/edit-hotel/edit-hotel.component.html",
+        "hash": "15002963985230622335"
+      },
+      {
+        "file": "src/app/feature/edit-hotel/edit-hotel.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/feature/edit-hotel/edit-hotel.component.spec.ts",
+        "hash": "1494754015893326226"
+      },
+      {
+        "file": "src/app/feature/edit-hotel/edit-hotel.component.ts",
+        "hash": "17777699870131578276"
+      },
+      {
+        "file": "src/app/feature/home/home.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/feature/home/home.component.html",
+        "hash": "15066936648872268846"
+      },
+      {
+        "file": "src/app/feature/home/home.component.spec.ts",
+        "hash": "8934134647081791041"
+      },
+      {
+        "file": "src/app/feature/home/home.component.ts",
+        "hash": "8892892418929992440"
+      },
+      {
+        "file": "src/app/feature/hotel-list/hotel-list.component.html",
+        "hash": "18319119819259741422"
+      },
+      {
+        "file": "src/app/feature/hotel-list/hotel-list.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/feature/hotel-list/hotel-list.component.spec.ts",
+        "hash": "12339842714558703405"
+      },
+      {
+        "file": "src/app/feature/hotel-list/hotel-list.component.ts",
+        "hash": "9208181175284891045"
+      },
+      {
+        "file": "src/app/feature/profile/profile.component.html",
+        "hash": "8080170297547302038"
+      },
+      {
+        "file": "src/app/feature/profile/profile.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/feature/profile/profile.component.ts",
+        "hash": "7537626800800550950"
+      },
+      {
+        "file": "src/app/shared/shared/shared.module.ts",
+        "hash": "5458674686304960584"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/environments/environment.prod.ts",
+        "hash": "5406836414239361753"
+      },
+      {
+        "file": "src/environments/environment.ts",
+        "hash": "10232718114616947880"
+      },
+      {
+        "file": "src/favicon.ico",
+        "hash": "3464744996580215640"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "15186728992541506526"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "10677612470474905821"
+      },
+      {
+        "file": "src/polyfills.ts",
+        "hash": "2035846685621806592"
+      },
+      {
+        "file": "src/styles.scss",
+        "hash": "5195668842064076916"
+      },
+      {
+        "file": "src/test-setup.ts",
+        "hash": "928580333957722935"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "9041030522571917449"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "13345998764692174667"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "3822970771942938937"
+      }
+    ]
+  }
+}
