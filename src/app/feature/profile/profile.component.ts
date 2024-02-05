@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   user: any;
+  private subscription: Subscription = new Subscription();
 
   constructor(private authService: AuthService) {
     this.user = {};
   }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   public ngOnInit(): void {
-    this.authService.user$.subscribe((success: any) => {
+    this.subscription = this.authService.user$.subscribe((success: any) => {
       this.user = success;
-      console.log('this.user :>> ', this.user);
     });
   }
 }

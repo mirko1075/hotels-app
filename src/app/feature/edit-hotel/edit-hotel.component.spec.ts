@@ -6,6 +6,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { of } from 'rxjs';
 
 const authServiceStub = {
   logout: jest.fn(),
@@ -25,11 +26,11 @@ const hotelMock = {
 
 const hotelServiceStub = {
   hotels: [],
-  getHotelById: jest.fn().mockReturnValue(hotelMock),
-  getHotels: jest.fn().mockReturnValue([hotelMock]),
-  updateHotel: () => null,
-  deleteHotel: () => null,
-  addHotel: () => null,
+  getHotelById: jest.fn().mockReturnValue(of(hotelMock)),
+  getHotels: jest.fn().mockReturnValue(of([hotelMock])),
+  updateHotel: () => of(hotelMock),
+  deleteHotel: () => of([hotelMock]),
+  addHotel: () => of(hotelMock),
 };
 
 const routeParamsStub = {
@@ -93,14 +94,15 @@ describe('EditHotelComponent', () => {
   it('should set hotel to the hotel with the id from the hotelService when OnInit is called', () => {
     component.ngOnInit();
     expect(component.hotel).toEqual({
-      category: 0,
-      id: -1,
-      imageUrl: undefined,
-      location: '',
-      name: '',
-      price: 0,
-      rating: 0,
-      vacational: undefined,
+      category: 4,
+      id: 1,
+      imageUrl:
+        'https://media.istockphoto.com/id/104731717/es/foto/complejo-tur%C3%ADstico-de-lujo.jpg?s=2048x2048&w=is&k=20&c=QRLnvUZi6xp9xgss6e6IMg5Gv5g2iosfFzPR9DyS__g=',
+      location: 'Madrid',
+      name: 'Hotel A',
+      price: 100,
+      rating: 4,
+      vacational: true,
     });
   });
 

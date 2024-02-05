@@ -1,6 +1,7 @@
 // hotel.service.ts
 import { Injectable } from '@angular/core';
 import { Hotel } from '../models/hotel.model';
+import { Observable, of } from 'rxjs';
 const hotels = [
   {
     id: 1,
@@ -31,15 +32,15 @@ const hotels = [
 export class HotelService {
   private hotels: Hotel[] = hotels;
 
-  getHotels(): any[] {
-    return [...this.hotels];
+  getHotels(): Observable<Hotel[]> {
+    return of([...this.hotels]);
   }
 
-  getHotelById(id: number): any {
-    return this.hotels.find((hotel) => hotel.id === id);
+  getHotelById(id: number): Observable<Hotel | undefined> {
+    return of(this.hotels.find((hotel) => hotel.id === id));
   }
 
-  updateHotel(updatedHotel: any): void {
+  updateHotel(updatedHotel: any): Observable<Hotel> {
     debugger;
     const index = this.hotels.findIndex(
       (hotel) => hotel.id === updatedHotel.id
@@ -47,16 +48,19 @@ export class HotelService {
     if (index !== -1) {
       this.hotels[index] = { ...this.hotels[index], ...updatedHotel };
     }
+    return of(this.hotels[index]);
   }
 
-  addHotel(hotel: Hotel): void {
+  addHotel(hotel: Hotel): Observable<Hotel> {
     const ids = this.hotels.map((h) => h.id);
     const lastId = Math.max(...ids);
     hotel.id = lastId + 1;
     this.hotels.push(hotel);
+    return of(hotel);
   }
 
-  deleteHotel(hotelId: number): void {
+  deleteHotel(hotelId: number): Observable<Hotel[]> {
     this.hotels = this.hotels.filter((h) => h.id !== hotelId);
+    return of(this.hotels);
   }
 }

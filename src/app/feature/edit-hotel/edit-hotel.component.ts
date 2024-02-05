@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Hotel, HotelImpl } from 'src/app/core/models/hotel.model';
 import { HotelService } from 'src/app/core/services/hotels.service';
 @Component({
@@ -7,9 +8,10 @@ import { HotelService } from 'src/app/core/services/hotels.service';
   templateUrl: './edit-hotel.component.html',
   styleUrls: ['./edit-hotel.component.scss'],
 })
-export class EditHotelComponent implements OnInit {
+export class EditHotelComponent implements OnInit, OnDestroy {
   hotelId: number = -1;
-  hotel!: Hotel;
+  hotel: Hotel = new HotelImpl(-1, '', '', 0, 0, 0);
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
@@ -18,16 +20,27 @@ export class EditHotelComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   ngOnInit() {
     this.hotelId = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.hotelId) this.hotel = this.hotelService.getHotelById(this.hotelId);
-    else this.hotel = new HotelImpl(-1, '', '', 0, 0, 0);
+
+    this.subscription = this.hotelService
+      .getHotelById(this.hotelId)
+      .subscribe((hotel) => {
+        if (hotel) this.hotel = hotel;
+      });
   }
 
   saveChanges() {
     if (this.hotelId && this.hotelId > 0)
-      this.hotelService.updateHotel(this.hotel);
-    else this.hotelService.addHotel(this.hotel);
+      this.subscription.add(
+        this.hotelService.updateHotel(this.hotel).subscribe()
+      );
+    else
+      this.subscription.add(this.hotelService.addHotel(this.hotel).subscribe());
     this.cdr.detectChanges();
     this.router.navigate(['/hotels']);
   }

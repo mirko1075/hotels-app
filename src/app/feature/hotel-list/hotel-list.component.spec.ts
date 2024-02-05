@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HotelListComponent } from './hotel-list.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HotelService } from 'src/app/core/services/hotels.service';
-import exp from 'constants';
+import { of } from 'rxjs';
 
 const hotelServiceStub = {
-  deleteHotel: jest.fn(),
-  getHotels: jest.fn(),
+  deleteHotel: jest.fn().mockReturnValue(of({})),
+  getHotels: jest.fn().mockReturnValue(of([])),
 };
 
 describe('component', () => {
@@ -55,7 +55,7 @@ describe('component', () => {
     ];
     const spy = jest
       .spyOn(hotelServiceStub, 'getHotels')
-      .mockReturnValue(hotels);
+      .mockReturnValue(of(hotels));
 
     component.ngOnInit();
     expect(spy).toHaveBeenCalled();
