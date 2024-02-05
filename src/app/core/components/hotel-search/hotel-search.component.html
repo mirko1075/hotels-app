@@ -1,6 +1,18 @@
-<input
-  [(ngModel)]="searchText"
-  placeholder="Search Hotels"
-  (keyup)="searchHotels()"
-/>
-<button (click)="clearSearch()">Clear</button>
+<div class="input-group mb-3">
+  <input
+    [(ngModel)]="searchText"
+    (keyup)="searchHotels()"
+    type="text"
+    class="form-control"
+    placeholder="Search Hotels"
+  />
+  <div class="input-group-append">
+    <button
+      (click)="clearSearch()"
+      class="btn btn-outline-secondary"
+      type="button"
+    >
+      Clear
+    </button>
+  </div>
+</div>

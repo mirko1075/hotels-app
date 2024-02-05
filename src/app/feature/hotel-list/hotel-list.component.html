@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Hotel List</h2>
   <app-hotel-search (sendText)="search($event)"></app-hotel-search>
-  <div class="row">
+  <div class="row" *ngIf="hotels.length; else noHotels">
     <div class="col-md-4" *ngFor="let hotel of hotels">
       <app-hotel-card
         [hotel]="hotel"
@@ -10,3 +10,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #noHotels>
+  <p>No hotels found.</p>
+</ng-template>
