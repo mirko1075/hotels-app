@@ -1,13 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { HotelService } from '../../services/hotels.service';
-import {
-  Subscription,
-  debounceTime,
-  distinctUntilChanged,
-  switchMap,
-  tap,
-} from 'rxjs';
 
 @Component({
   selector: 'app-hotel-search',
@@ -17,8 +9,6 @@ import {
 export class HotelSearchComponent {
   searchText: string = '';
   @Output() sendText = new EventEmitter<string>();
-
-  constructor(private hotelService: HotelService) {}
 
   searchHotels() {
     this.sendText.emit(this.searchText);

@@ -72,4 +72,12 @@ describe('NavbarComponent', () => {
     component.toggleNavbarCollapsing();
     expect(component.navbarCollapsed).toBe(false);
   });
+
+  it('should call authService.logout with openUrl function that replaces window location with the provided url', () => {
+    const spy = jest.spyOn(authServiceStub, 'logout');
+    const spyWindow = jest.spyOn(windowStub.location, 'replace');
+    component.signOut();
+
+    expect(spy).toHaveBeenCalled();
+  });
 });

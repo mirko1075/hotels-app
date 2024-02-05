@@ -212,4 +212,40 @@ describe('HotelService', () => {
       ]);
     });
   });
+
+  it('should return an Observable of an array of hotels that match the given name', () => {
+    const hotelService = new HotelService();
+    const hotels: Hotel[] = [
+      {
+        id: 1,
+        name: 'Hotel A',
+        location: 'Location A',
+        price: 100,
+        rating: 4,
+        category: 1,
+      },
+      {
+        id: 2,
+        name: 'Hotel B',
+        location: 'Location B',
+        price: 200,
+        rating: 5,
+        category: 2,
+      },
+      {
+        id: 3,
+        name: 'Hotel C',
+        location: 'Location C',
+        price: 150,
+        rating: 3,
+        category: 1,
+      },
+    ];
+    hotelService['hotels'] = hotels;
+
+    const result$ = hotelService.getHotelByName('Hotel A');
+    result$.subscribe((result) => {
+      expect(result).toEqual([hotels[0]]);
+    });
+  });
 });

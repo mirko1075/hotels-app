@@ -34,7 +34,6 @@ export class HotelListComponent implements OnInit, OnDestroy {
   }
 
   search(searchText: string): void {
-    console.log('searchText :>> ', searchText);
     this.hotelService.getHotelByName(searchText).subscribe((hotels) => {
       if (hotels) this.hotels = hotels;
     });

@@ -99,4 +99,13 @@ describe('component', () => {
 
     expect(deleteHotelSpy).not.toHaveBeenCalled();
   });
+
+  it('should call getHotelByName method with the provided searchText parameter', () => {
+    const searchText = 'example';
+    const spy = jest.spyOn(hotelServiceStub, 'getHotelByName');
+
+    component.search(searchText);
+
+    expect(spy).toHaveBeenCalledWith(searchText);
+  });
 });
