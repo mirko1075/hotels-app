@@ -41,20 +41,8 @@ export class HotelService {
     return new NamebasedFinder().getById(this.hotels, id);
   }
 
-  getHotelByName(name: string): Observable<Hotel[] | undefined> {
-    return new NamebasedFinder().getByName(this.hotels, name);
-  }
-
-  getHotelsWhereNameIsEqualToParameter(name: string, matchType: string) {
-    if (matchType === 'exact') {
-      return new NamebasedFinder().getExactMatchType(this.hotels, name);
-    } else if (matchType === 'word') {
-      return new NamebasedFinder().getByName(this.hotels, name);
-    }
-    return undefined;
-  }
-
-  updateHotel(updatedHotel: Hotel): Observable<Hotel> {
+  updateHotel(updatedHotel: any): Observable<Hotel> {
+    debugger;
     const index = this.hotels.findIndex(
       (hotel) => hotel.id === updatedHotel.id
     );
