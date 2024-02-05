@@ -40,6 +40,14 @@ export class HotelService {
     return of(this.hotels.find((hotel) => hotel.id === id));
   }
 
+  getHotelsWhereNameIsEqualToParameter(ccc: any, matchType: any) {
+    if (matchType === 'exact') {
+      return new NamebasedFinder().getExactMatchType(this.hotels, ccc);
+    } else if (matchType === 'word') {
+      return new NamebasedFinder().getByName(this.hotels, ccc);
+    }
+  }
+
   updateHotel(updatedHotel: any): Observable<Hotel> {
     debugger;
     const index = this.hotels.findIndex(
@@ -63,4 +71,23 @@ export class HotelService {
     this.hotels = this.hotels.filter((h) => h.id !== hotelId);
     return of(this.hotels);
   }
+}
+
+type NamedItem = {
+  name: string;
+};
+
+export class NamebasedFinder<H extends NamedItem> implements Finders<H> {
+
+  getByName(list: H[], name: string): H[] | undefined {
+    return list.filter((myh) => myh.name === name);
+  }
+
+  getExactMatchType(list: H[], name: string): H[] | undefined {
+    return list.filter((myh) => myh.name === name);
+  }
+}
+
+export interface Finders<H> {
+  getByName( list: H[], name: string ): H[]| undefined;
 }
