@@ -102,7 +102,7 @@ describe('HotelService', () => {
   });
 
   it('should not update any hotel object when updateHotel method is called with an empty object', () => {
-    const updatedHotel = {};
+    const updatedHotel = {} as Hotel;
     hotelService.updateHotel(updatedHotel);
     hotelService.getHotels().subscribe((result) => {
       expect(result).toEqual(hotels);

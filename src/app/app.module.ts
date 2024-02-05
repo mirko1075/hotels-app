@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './feature/profile/profile.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule, AuthService } from '@auth0/auth0-angular';
 import { HotelListComponent } from './feature/hotel-list/hotel-list.component';
 import { HotelCardComponent } from './core/components/hotel-card/hotel-card.component';
 import { EditHotelComponent } from './feature/edit-hotel/edit-hotel.component';
+import { HotelSearchComponent } from './core/components/hotel-search/hotel-search.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,11 @@ import { EditHotelComponent } from './feature/edit-hotel/edit-hotel.component';
     HotelListComponent,
     HotelCardComponent,
     EditHotelComponent,
+    HotelSearchComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     AuthModule.forRoot({

@@ -10,8 +10,9 @@ import { HotelService } from 'src/app/core/services/hotels.service';
 })
 export class HotelListComponent implements OnInit, OnDestroy {
   hotels: Hotel[] = [];
-  private subscription: Subscription = new Subscription();
-
+  private subscription = new Subscription();
+  searchText = '';
+  searchResult$ = this.hotelService.getHotelByName(this.searchText);
   constructor(private hotelService: HotelService) {}
 
   ngOnDestroy(): void {
@@ -22,11 +23,20 @@ export class HotelListComponent implements OnInit, OnDestroy {
     this.subscription = this.hotelService.getHotels().subscribe((hotels) => {
       this.hotels = hotels;
     });
+    this.subscription.add(
+      this.searchResult$.subscribe((hotels) => {
+        if (hotels) this.hotels = hotels;
+      })
+    );
   }
 
   deleteHotel(hotelId: number): void {
     if (typeof hotelId !== 'number' || hotelId < 1) return;
 
     this.subscription.add(this.hotelService.deleteHotel(hotelId).subscribe());
+  }
+
+  assignTextValue(text: string) {
+    this.searchText = text;
   }
 }

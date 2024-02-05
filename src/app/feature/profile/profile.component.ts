@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, User } from '@auth0/auth0-angular';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  user: any;
+  user: User;
   private subscription: Subscription = new Subscription();
 
   constructor(private authService: AuthService) {
@@ -19,8 +19,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.subscription = this.authService.user$.subscribe((success: any) => {
-      this.user = success;
-    });
+    this.subscription = this.authService.user$.subscribe(
+      (user: User | null | undefined) => {
+        if (user) this.user = user;
+      }
+    );
   }
 }

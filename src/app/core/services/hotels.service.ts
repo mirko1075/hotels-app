@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Hotel } from '../models/hotel.model';
 import { Observable, of } from 'rxjs';
+import { NamebasedFinder } from '../helpers/helpers';
 const hotels = [
   {
     id: 1,
@@ -37,19 +38,23 @@ export class HotelService {
   }
 
   getHotelById(id: number): Observable<Hotel | undefined> {
-    return of(this.hotels.find((hotel) => hotel.id === id));
+    return new NamebasedFinder().getById(this.hotels, id);
   }
 
-  getHotelsWhereNameIsEqualToParameter(ccc: any, matchType: any) {
+  getHotelByName(name: string): Observable<Hotel[] | undefined> {
+    return new NamebasedFinder().getByName(this.hotels, name);
+  }
+
+  getHotelsWhereNameIsEqualToParameter(name: string, matchType: string) {
     if (matchType === 'exact') {
-      return new NamebasedFinder().getExactMatchType(this.hotels, ccc);
+      return new NamebasedFinder().getExactMatchType(this.hotels, name);
     } else if (matchType === 'word') {
-      return new NamebasedFinder().getByName(this.hotels, ccc);
+      return new NamebasedFinder().getByName(this.hotels, name);
     }
+    return undefined;
   }
 
-  updateHotel(updatedHotel: any): Observable<Hotel> {
-    debugger;
+  updateHotel(updatedHotel: Hotel): Observable<Hotel> {
     const index = this.hotels.findIndex(
       (hotel) => hotel.id === updatedHotel.id
     );
@@ -71,23 +76,4 @@ export class HotelService {
     this.hotels = this.hotels.filter((h) => h.id !== hotelId);
     return of(this.hotels);
   }
-}
-
-type NamedItem = {
-  name: string;
-};
-
-export class NamebasedFinder<H extends NamedItem> implements Finders<H> {
-
-  getByName(list: H[], name: string): H[] | undefined {
-    return list.filter((myh) => myh.name === name);
-  }
-
-  getExactMatchType(list: H[], name: string): H[] | undefined {
-    return list.filter((myh) => myh.name === name);
-  }
-}
-
-export interface Finders<H> {
-  getByName( list: H[], name: string ): H[]| undefined;
 }
