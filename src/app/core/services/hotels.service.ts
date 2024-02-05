@@ -41,6 +41,10 @@ export class HotelService {
     return new NamebasedFinder().getById(this.hotels, id);
   }
 
+  getHotelByName(name: string): Observable<Hotel[] | undefined> {
+    return new NamebasedFinder().getByName(this.hotels, name);
+  }
+
   updateHotel(updatedHotel: any): Observable<Hotel> {
     debugger;
     const index = this.hotels.findIndex(

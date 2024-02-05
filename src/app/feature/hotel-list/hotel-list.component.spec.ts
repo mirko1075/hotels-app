@@ -5,9 +5,47 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HotelService } from 'src/app/core/services/hotels.service';
 import { of } from 'rxjs';
 
+const hotelMock = {
+  category: 4,
+  id: 2,
+  imageUrl:
+    'https://media.istockphoto.com/id/183880289/es/foto/isla-fisher-en-miami.jpg?s=2048x2048&w=is&k=20&c=_XYz9xYSZ0sJ55tzFhX4Ga0xYMTfiePUZMewA_4U10I=',
+  location: 'Barcelona',
+  name: 'Hotel B',
+  price: 120,
+  rating: 3.5,
+  vacational: true,
+};
+
+const hotelsMock = [
+  {
+    category: 4,
+    id: 1,
+    imageUrl:
+      'https://media.istockphoto.com/id/104731717/es/foto/complejo-tur%C3%ADstico-de-lujo.jpg?s=2048x2048&w=is&k=20&c=QRLnvUZi6xp9xgss6e6IMg5Gv5g2iosfFzPR9DyS__g=',
+    location: 'Madrid',
+    name: 'Hotel A',
+    price: 100,
+    rating: 4,
+    vacational: true,
+  },
+  {
+    category: 4,
+    id: 2,
+    imageUrl:
+      'https://media.istockphoto.com/id/183880289/es/foto/isla-fisher-en-miami.jpg?s=2048x2048&w=is&k=20&c=_XYz9xYSZ0sJ55tzFhX4Ga0xYMTfiePUZMewA_4U10I=',
+    location: 'Barcelona',
+    name: 'Hotel B',
+    price: 120,
+    rating: 3.5,
+    vacational: true,
+  },
+];
+
 const hotelServiceStub = {
   deleteHotel: jest.fn().mockReturnValue(of({})),
-  getHotels: jest.fn().mockReturnValue(of([])),
+  getHotels: jest.fn().mockReturnValue(of(hotelsMock)),
+  getHotelByName: jest.fn().mockReturnValue(of([hotelMock])),
 };
 
 describe('component', () => {
@@ -29,37 +67,12 @@ describe('component', () => {
   });
 
   it('should initialize hotels array with data from hotelService.getHotels()', () => {
-    const hotels = [
-      {
-        category: 4,
-        id: 1,
-        imageUrl:
-          'https://media.istockphoto.com/id/104731717/es/foto/complejo-tur%C3%ADstico-de-lujo.jpg?s=2048x2048&w=is&k=20&c=QRLnvUZi6xp9xgss6e6IMg5Gv5g2iosfFzPR9DyS__g=',
-        location: 'Madrid',
-        name: 'Hotel A',
-        price: 100,
-        rating: 4,
-        vacational: true,
-      },
-      {
-        category: 4,
-        id: 2,
-        imageUrl:
-          'https://media.istockphoto.com/id/183880289/es/foto/isla-fisher-en-miami.jpg?s=2048x2048&w=is&k=20&c=_XYz9xYSZ0sJ55tzFhX4Ga0xYMTfiePUZMewA_4U10I=',
-        location: 'Barcelona',
-        name: 'Hotel B',
-        price: 120,
-        rating: 3.5,
-        vacational: true,
-      },
-    ];
-    const spy = jest
-      .spyOn(hotelServiceStub, 'getHotels')
-      .mockReturnValue(of(hotels));
+    const spy = jest.spyOn(hotelServiceStub, 'getHotels');
 
     component.ngOnInit();
     expect(spy).toHaveBeenCalled();
-    expect(component.hotels).toEqual(hotels);
+    console.log('component.hotels :>> ', component.hotels);
+    expect(component.hotels).toEqual(hotelsMock);
   });
 
   it('should call the deleteHotel method of the hotelService with the provided hotelId', () => {

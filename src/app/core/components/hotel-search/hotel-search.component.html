@@ -1,10 +1,6 @@
-<div [formGroup]="searchForm">
-  <label for="searchText">Enter your preferences:</label>
-  <input
-    type="text"
-    id="searchText"
-    name="searchText"
-    [formControl]="searchText"
-    (input)="onSearchTextChanged()"
-  />
-</div>
+<input
+  [(ngModel)]="searchText"
+  placeholder="Search Hotels"
+  (keyup)="searchHotels()"
+/>
+<button (click)="clearSearch()">Clear</button>

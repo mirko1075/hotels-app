@@ -15,47 +15,17 @@ import {
   styleUrls: ['./hotel-search.component.scss'],
 })
 export class HotelSearchComponent {
-  searchForm!: FormGroup;
+  searchText: string = '';
+  @Output() sendText = new EventEmitter<string>();
 
-  @Output() searchTextChanged: EventEmitter<string> =
-    new EventEmitter<string>();
-  searchText = new FormControl('');
-  subscription = new Subscription();
-  errorMessage: any;
+  constructor(private hotelService: HotelService) {}
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.searchForm = this.fb.group({
-      searchText: [''],
-    });
-    const formControl = this.searchForm?.get('searchText');
-    if (formControl)
-      this.subscription = this.searchForm.valueChanges
-        .pipe(
-          debounceTime(300),
-          distinctUntilChanged(),
-          switchMap((query) => {
-            console.log('query :>> ', query);
-            this.searchTextChanged.emit(query);
-            return query;
-          })
-        )
-        .subscribe(
-          (result) => {
-            this.searchTextChanged.emit(result as string);
-          },
-          (error) => {
-            this.errorMessage = error;
-            console.log(this.errorMessage);
-          },
-          () => {
-            console.log('onCompleted');
-          }
-        );
+  searchHotels() {
+    this.sendText.emit(this.searchText);
   }
-  onSearchTextChanged(): void {
-    if (this.searchText.value?.length)
-      this.searchTextChanged.emit(this.searchText.value);
+
+  clearSearch() {
+    this.searchText = '';
+    this.searchHotels();
   }
 }
